@@ -44,11 +44,12 @@ runs:
         timeout ${{ inputs.timeout }}  ngrok tcp ${{ inputs.port }} & 
         echo "Started ngrok in background"
         sleep 10  # Wait for ngrok to start
-        ngrok_url=$(curl -s http://localhost:4040/api/tunnels | jq -r '.tunnels[0].public_url')
-        echo "ngrok URL: $ngrok_url"
+        echo "FILE_DATE=_$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
+        echo "ngrok_url=$(curl -s http://localhost:4040/api/tunnels | jq -r '.tunnels[0].public_url')" >> $GITHUB_ENV
+        echo ${{ env.ngrok_url }}
       shell: bash  
     - name: message 
       run: |
         echo "ssh login user: runner "
-        echo "ngrok URL: $ngrok_url "
+        echo "ngrok URL: ${{ env.ngrok_url }} "
       shell: bash  
