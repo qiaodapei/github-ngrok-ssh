@@ -46,7 +46,7 @@ runs:
         sleep 10  # Wait for ngrok to start
         echo "FILE_DATE=_$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
         echo "ngrok_url=$(curl -s http://localhost:4040/api/tunnels | jq -r '.tunnels[0].public_url')" >> $GITHUB_ENV
-        echo ${{ env.ngrok_url }}
+        echo ${{ ngrok_url }}
       shell: bash  
     - name: message 
       run: |
