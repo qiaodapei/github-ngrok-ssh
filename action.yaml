@@ -50,5 +50,5 @@ runs:
     - name: message 
       run: |
         echo "ssh login user: runner "
-        echo "ngrok URL: $ngrok_urlg
+        echo "ngrok URL: $ngrok_url "
       shell: bash  
