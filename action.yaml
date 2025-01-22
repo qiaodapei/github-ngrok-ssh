@@ -25,7 +25,7 @@ runs:
   using: composite
   steps:
     - name: Add SSH key
-      run: 
+      run: |
         mkdir -p ~/.ssh
         echo "${{ inputs.ssh_public_key }}" >> ~/.ssh/authorized_keys
         chmod 755 ~
